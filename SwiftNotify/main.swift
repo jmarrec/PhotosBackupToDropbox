@@ -20,6 +20,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         center.delegate = self
 
         if waitForAction {
+            let closeAndStartAction = UNNotificationAction(
+                identifier: "CLOSE_AND_START",
+                title: "Close Photos & Start",
+                options: []
+            )
             let skipAction = UNNotificationAction(
                 identifier: "SKIP",
                 title: "Skip Tonight",
@@ -27,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             )
             let category = UNNotificationCategory(
                 identifier: "WAIT_CATEGORY",
-                actions: [skipAction],
+                actions: [closeAndStartAction, skipAction],
                 intentIdentifiers: [],
                 options: [.customDismissAction]
             )
@@ -81,10 +86,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
         switch response.actionIdentifier {
+        case "CLOSE_AND_START":
+            NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.Photos").first?.terminate()
+            exit(0)
         case "SKIP":
-            exit(1)  // User chose Skip Tonight
+            exit(1)
         default:
-            exit(0)  // User dismissed or clicked the notification body
+            exit(0)  // User dismissed the notification
         }
     }
 }
