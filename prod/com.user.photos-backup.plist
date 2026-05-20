@@ -7,7 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/sh</string>
-        <string>SCRIPT_PATH</string>
+        <string>@SCRIPT_PATH@</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
@@ -17,8 +17,8 @@
         <integer>0</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>LOG_PATH</string>
+    <string>@LOG_PATH@</string>
     <key>StandardErrorPath</key>
-    <string>LOG_PATH</string>
+    <string>@LOG_PATH@</string>
 </dict>
 </plist>

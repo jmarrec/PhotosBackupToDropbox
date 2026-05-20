@@ -3,7 +3,7 @@
 PROG_NAME="Photos Backup to Dropbox"
 LOG="$HOME/Library/Logs/photos-backup.log"
 MAX_WAIT_SECONDS=1800
-NOTIFY_APP="NOTIFY_APP_PATH"
+NOTIFY_APP="@NOTIFY_APP_PATH@"
 
 notify() {
     if [ -x "$NOTIFY_APP" ]; then

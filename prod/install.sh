@@ -17,12 +17,12 @@ chmod +x "$SCRIPT_PATH"
 NOTIFY_APP_PATH="$(cd "$SCRIPT_DIR/.." && pwd)/SwiftNotify/SwiftNotify.app/Contents/MacOS/SwiftNotify"
 
 sed -i '' \
-    -e "s|NOTIFY_APP_PATH|$NOTIFY_APP_PATH|g" \
+    -e "s|@NOTIFY_APP_PATH@|$NOTIFY_APP_PATH|g" \
     "$SCRIPT_PATH"
 
 sed \
-    -e "s|SCRIPT_PATH|$SCRIPT_PATH|g" \
-    -e "s|LOG_PATH|$LOG_PATH|g" \
+    -e "s|@SCRIPT_PATH@|$SCRIPT_PATH|g" \
+    -e "s|@LOG_PATH@|$LOG_PATH|g" \
     "$SCRIPT_DIR/com.user.photos-backup.plist" > "$PLIST_PATH"
 
 echo "$(date): --- Agent unloading for reinstall ---" >> "$LOG_PATH"
