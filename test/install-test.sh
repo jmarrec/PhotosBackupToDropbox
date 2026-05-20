@@ -14,6 +14,12 @@ mkdir -p "$INSTALL_DIR" "$AGENTS_DIR" "$LOG_DIR"
 cp "$SCRIPT_DIR/photos-backup-test.sh" "$SCRIPT_PATH"
 chmod +x "$SCRIPT_PATH"
 
+NOTIFY_APP_PATH="$(cd "$SCRIPT_DIR/.." && pwd)/SwiftNotify/SwiftNotify.app/Contents/MacOS/SwiftNotify"
+
+sed -i '' \
+    -e "s|NOTIFY_APP_PATH|$NOTIFY_APP_PATH|g" \
+    "$SCRIPT_PATH"
+
 sed \
     -e "s|SCRIPT_PATH|$SCRIPT_PATH|g" \
     -e "s|LOG_PATH|$LOG_PATH|g" \
