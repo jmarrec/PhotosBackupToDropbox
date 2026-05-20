@@ -6,7 +6,7 @@
     <string>com.user.photos-backup-test</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/bin/bash</string>
+        <string>/bin/sh</string>
         <string>SCRIPT_PATH</string>
     </array>
     <key>StartInterval</key>

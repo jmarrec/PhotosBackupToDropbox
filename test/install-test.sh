@@ -19,7 +19,9 @@ sed \
     -e "s|LOG_PATH|$LOG_PATH|g" \
     "$SCRIPT_DIR/com.user.photos-backup-test.plist" > "$PLIST_PATH"
 
+echo "$(date): --- Agent unloading for reinstall ---" >> "$LOG_PATH"
 launchctl unload "$PLIST_PATH" 2>/dev/null
+echo "$(date): --- Agent reloaded ---" >> "$LOG_PATH"
 launchctl load "$PLIST_PATH"
 
 echo "Test agent installed. Will run every 2 minutes."
