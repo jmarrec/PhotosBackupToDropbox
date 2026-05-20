@@ -2,6 +2,12 @@
 
 Automatically backs up `~/Pictures/Photos Library.photoslibrary` to `~/Dropbox/` using rsync, triggered daily via a macOS launchd agent. Notifies via a native macOS notification (SwiftNotify) with options to close Photos and start the backup, or skip for the night.
 
+## Why not store the library directly in Dropbox?
+
+The Photos library is a package — a directory containing an SQLite database and thousands of individual files. Dropbox syncs files individually and continuously, with no awareness of SQLite transaction boundaries. If Photos is open and writing to its database while Dropbox is syncing, Dropbox can upload a partial or mid-write state, resulting in a corrupted database on the other end. Apple only supports syncing the Photos library via iCloud, which has the necessary coordination built in.
+
+This project works around that by keeping the library in its normal location (`~/Pictures/`) and using rsync to copy it to Dropbox only when Photos is fully closed, ensuring a consistent snapshot is always transferred.
+
 ## Structure
 
 ```
