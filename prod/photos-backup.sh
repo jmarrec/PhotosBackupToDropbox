@@ -52,7 +52,7 @@ fi
 echo "$(date): Starting $PROG_NAME..." >> "$LOG"
 notify "$PROG_NAME started."
 
-rsync -a --delete \
+rsync -a --delete --verbose \
     "$HOME/Pictures/Photos Library.photoslibrary" \
     "$HOME/Dropbox/" \
     >> "$LOG" 2>&1

@@ -18,6 +18,8 @@ test/               Test scripts and launchd plist (dry-run, runs every 2 minute
 SwiftNotify/build.sh
 ```
 
+I just went overboard because I found osascript notification to be ugly... So I created a Swift app that would use the MacOS Notification center (and I created an Icon to go with it)
+
 ### 2. Grant Full Disk Access
 
 rsync requires Full Disk Access to read the Photos library. When run from Terminal it inherits Terminal's permissions, but the launchd agent runs as a background process with no inherited permissions.
